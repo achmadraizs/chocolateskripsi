@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "nodemon --watch backend --exec babel-node backend/server.js"
-  },
-  "author": "",
-  "license": "ISC",
+  
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
@@ -20,6 +16,24 @@
     "@babel/core": "^7.10.3",
     "@babel/node": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
-    "nodemon": "^2.0.4"
+    "mkdirp": "^1.0.4",
+    "nodemon": "^2.0.4",
+    "rimraf": "^3.0.2"
+  },
+
+  "scripts": {
+    "start": "nodemon --watch backend --exec babel-node backend/server.js",
+    "build": "rmdir /s /q dist && babel backend -d dist",
+    "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/achmadraizs/chocolateweb.git"
   }
 }

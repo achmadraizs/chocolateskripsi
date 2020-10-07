@@ -1,6 +1,5 @@
 import express from 'express';
 import data from './data';
-import dotenv from 'dotenv';
 import config from './config';
 import bodyParser from 'body-parser';
 import userRoute from './routes/userRoute';
@@ -8,7 +7,7 @@ import mongoose from 'mongoose';
 import productRoute from './routes/productRoute';
 import orderRoute from './routes/orderRoute';
 
-dotenv.config();
+
 
 const mongodbUrl = config.MONGODB_URL;
 
@@ -41,4 +40,4 @@ app.get("/api/config/paypal", (req, res) => {
 //    res.send(data.products);
 //});
 
-app.listen(3000, () => { console.log("Server started at http://localhost:3000")})
+app.listen(process.env.PORT || 3000, () => { console.log("Server started at http://localhost:3000")})
