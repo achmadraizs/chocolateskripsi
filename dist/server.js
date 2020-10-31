@@ -33,7 +33,7 @@ _mongoose["default"].connect(mongodbUrl, {
 });
 
 var app = (0, _express["default"])();
-app.use(express.static(path.join(chocolate, "/../frontend/build")));
+
 app.use(_bodyParser["default"].json());
 app.use("/api/users", _userRoute["default"]);
 app.use("/api/products", _productRoute["default"]);
@@ -54,7 +54,7 @@ app.get("/api/config/paypal", function (req, res) {
 //
 //    res.send(data.products);
 //});
-app.get("*", (req, res) => res.sendFile(path.join('${chocolate}/../frontend/build/index.html')));
+
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started at http://localhost:3000");
 });
